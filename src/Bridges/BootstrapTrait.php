@@ -19,7 +19,7 @@ trait BootstrapTrait
     {
         $appBootstrap = $this->normalizeBootstrapClass($appBootstrap);
 
-        $this->middleware = new $appBootstrap;
+        $this->middleware = new $appBootstrap();
         if ($this->middleware instanceof ApplicationEnvironmentAwareInterface) {
             $this->middleware->initialize($appenv, $debug);
         }
