@@ -106,7 +106,7 @@ trait ConfigTrait
         $config['limit-concurrent-requests'] = $this->optionOrConfigValue($input, 'limit-concurrent-requests', $config);
         $config['request-body-buffer'] = $this->optionOrConfigValue($input, 'request-body-buffer', $config);
         $config['ttl'] = (int)$this->optionOrConfigValue($input, 'ttl', $config);
-        $config['populate-server-var'] = (boolean)$this->optionOrConfigValue($input, 'populate-server-var', $config);
+        $config['populate-server-var'] = (bool)$this->optionOrConfigValue($input, 'populate-server-var', $config);
         $config['socket-path'] = $this->optionOrConfigValue($input, 'socket-path', $config);
         $config['pidfile'] = $this->optionOrConfigValue($input, 'pidfile', $config);
         $config['reload-timeout'] = $this->optionOrConfigValue($input, 'reload-timeout', $config);

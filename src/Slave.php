@@ -18,13 +18,13 @@ class Slave
      * 6. locked (busy, but gracefully awaiting termination)
      */
 
-    const ANY = 0;
-    const CREATED = 1;
-    const REGISTERED = 2;
-    const READY = 3;
-    const BUSY = 4;
-    const CLOSED = 5;
-    const LOCKED = 6;
+    public const ANY = 0;
+    public const CREATED = 1;
+    public const REGISTERED = 2;
+    public const READY = 3;
+    public const BUSY = 4;
+    public const CLOSED = 5;
+    public const LOCKED = 6;
 
     protected $socketPath;
 
