@@ -1,5 +1,6 @@
 <?php
-declare(ticks = 1);
+
+declare(ticks=1);
 
 namespace PHPPM;
 
@@ -238,7 +239,7 @@ class ProcessSlave
                 $bridgeClass = \sprintf('PHPPM\Bridges\\%s', \ucfirst($this->bridgeName));
             }
 
-            $this->bridge = new $bridgeClass;
+            $this->bridge = new $bridgeClass();
         }
 
         return $this->bridge;
@@ -477,7 +478,7 @@ class ProcessSlave
             );
             $this->shutdown();
         }
-        $this->sendMessage($this->controller, 'stats', ['memory_usage' => \round(\memory_get_peak_usage(true)/1048576, 2)]); // Convert memory usage to MB
+        $this->sendMessage($this->controller, 'stats', ['memory_usage' => \round(\memory_get_peak_usage(true) / 1048576, 2)]); // Convert memory usage to MB
         return $response;
     }
 
