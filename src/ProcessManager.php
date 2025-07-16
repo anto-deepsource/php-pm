@@ -1,5 +1,6 @@
 <?php
-declare(ticks = 1);
+
+declare(ticks=1);
 
 namespace PHPPM;
 
@@ -21,23 +22,23 @@ class ProcessManager
     /*
      * Load balander started, waiting for slaves to come up
      */
-    const STATE_STARTING = 0;
+    public const STATE_STARTING = 0;
 
     /*
      * Slaves started and registered
      */
-    const STATE_RUNNING = 1;
+    public const STATE_RUNNING = 1;
 
     /*
      * In emergency mode we need to close all workers due a fatal error
      * and wait for file changes to be able to restart workers
      */
-    const STATE_EMERGENCY = 2;
+    public const STATE_EMERGENCY = 2;
 
     /*
      * Load balancer is in shutdown
      */
-    const STATE_SHUTDOWN = 3;
+    public const STATE_SHUTDOWN = 3;
 
     /**
      * Load balancer status
@@ -225,14 +226,14 @@ class ProcessManager
     /**
      * Controller port
      */
-    const CONTROLLER_PORT = 5500;
+    public const CONTROLLER_PORT = 5500;
 
     /**
      * php streams are limited by default to 32 concurrent TCP connections,
      * setting the same 511 default as nginx/apache and others.
      * Beware that your system somaxconn settings might be lower than this
      */
-    const TCP_BACKLOG = 511;
+    public const TCP_BACKLOG = 511;
 
     /**
      * ProcessManager constructor.
@@ -812,7 +813,7 @@ class ProcessManager
                     \sprintf(
                         "<info>%d workers (starting at %d) up and ready. Application is ready at http://%s:%s/</info>",
                         $this->slaveCount,
-                        self::CONTROLLER_PORT+1,
+                        self::CONTROLLER_PORT + 1,
                         $this->host,
                         $this->port
                     )
@@ -983,7 +984,7 @@ class ProcessManager
                     \sprintf("<info>[%s] File %s has been removed.</info>", \date('d/M/Y:H:i:s O'), $filePath)
                 );
                 $numChanged++;
-            //If the file modification time has changed, update the metadata and check its contents.
+                //If the file modification time has changed, update the metadata and check its contents.
             } elseif ($knownMTime !== ($actualFileTime = \filemtime($filePath))) {
                 //update time metadata
                 $this->filesLastMTime[$filePath] = $actualFileTime;
