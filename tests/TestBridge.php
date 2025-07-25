@@ -15,17 +15,17 @@ class TestBridge extends StaticBridge
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $params = $request->getQueryParams();
-        if(@$params['exit_prematurely'] == '1') {
+        if (@$params['exit_prematurely'] == '1') {
             exit();
         }
-        if(isset($params['sleep'])) {
+        if (isset($params['sleep'])) {
             sleep($params['sleep']);
         }
-        if(isset($params['memory'])) { // Allocate MB
-            $longvar =  str_repeat('Lorem Ipsum', $params['memory']*1048576); // Create a multi-megabyte string
+        if (isset($params['memory'])) { // Allocate MB
+            $longvar =  str_repeat('Lorem Ipsum', $params['memory'] * 1048576); // Create a multi-megabyte string
         }
-        if(isset($params['exception'])) {
-            register_shutdown_function(function() {
+        if (isset($params['exception'])) {
+            register_shutdown_function(function () {
                 file_put_contents('/tmp/ppmoutshutdownfunc', 'Shutdown function triggered');
             });
             throw new \Exception('This is a very bad exception');
